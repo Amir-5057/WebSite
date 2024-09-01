@@ -74,3 +74,17 @@ export interface IUpdatePostPayload {
 }
 
 export interface IDeletePostResponse extends IUpdatePostResponse {}
+
+
+export interface YGetAllLogins {
+  logins: string[];
+}
+
+export interface YGetAllIds{
+  id: number;
+}
+
+
+export interface YGetUserLogins extends ILoginUserPayload{}
+
+export interface YGetUserInfo extends IRegisterUserPayload{}

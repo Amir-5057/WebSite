@@ -162,6 +162,21 @@ export const MainPage = () => {
             </div>
           </div>
         </div>
+        {/* {isLoading && <h1>Loading...</h1>} */}
+        {data ? (
+          data.message.map((post) => (
+            <Post
+              name={post.user_fk.name}
+              date={post.reg_date}
+              postText={post.main_text}
+              photos={post.photos}
+            />
+          ))
+        ) : (
+          <h1>No data available</h1>
+        )}
+
+
 
         <Post name={""} date={""} postText={""} />
         <div className="Post _liked _marked">
