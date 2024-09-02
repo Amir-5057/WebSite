@@ -7,6 +7,7 @@ import { theme } from "./theme/theme";
 import { Provider } from "react-redux";
 import { store } from "./store/store";
 import { RegistrationPage } from "./pages/RegistrationPage/RegistratonPage";
+import PostPage from "./pages/PostPage/PostPage";
 
 const router = createBrowserRouter([
   {
@@ -24,6 +25,10 @@ const router = createBrowserRouter([
   {
     path: "/registration",
     element: <RegistrationPage />,
+  },
+  {
+    path: "/post/:id",
+    element: <PostPage />,
   },
 ]);
 

@@ -1,17 +1,19 @@
-interface IPostProps {
-  name: string,
-  date: any,
-  postText: string,
-  photos? : [
-    {
-      photo_id: number,
-      photo_url: string,
-    }
-  ]
+import { Link } from "react-router-dom";
 
+interface IPostProps {
+  name: string;
+  date: any;
+  postText: string;
+  photos?: [
+    {
+      photo_id: number;
+      photo_url: string;
+    }
+  ];
+  postId?: number;
 }
 
-const Post = ({ date, name, postText, photos }: IPostProps) => {
+const Post = ({ date, name, postText, photos, postId }: IPostProps) => {
   return (
     <div className="Post _liked _marked">
       <div className="UserElem">
@@ -22,21 +24,20 @@ const Post = ({ date, name, postText, photos }: IPostProps) => {
           </a>
           <p className="secondary__text">{date}</p>
         </div>
+        <div>{postId && <Link to={`/post/${postId}`}>Открыть пост</Link>}</div>
       </div>
       <p className="Post__text">{postText}</p>
       <div className="media-container">
         {photos
           ? photos.map((photo) => (
-            <img
-              key={photo.photo_id}
-              className="media__item"
-              src={photo.photo_url}
-              alt="Post photo"
-            />
-          ))
+              <img
+                key={photo.photo_id}
+                className="media__item"
+                src={photo.photo_url}
+                alt="Post photo"
+              />
+            ))
           : ""}
-
-
       </div>
       <div className="PostControls">
         <div className="icon-wrapper like">
@@ -115,17 +116,6 @@ const Post = ({ date, name, postText, photos }: IPostProps) => {
           />
         </svg>
       </div>
-      <svg
-        className="icon icon-more"
-        viewBox="0 0 25 5"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <g id="more">
-          <circle id="ellipse" cx="22.5" cy="2.5" r="2.5" />
-          <circle id="ellipse_2" cx="12.5" cy="2.5" r="2.5" />
-          <circle id="ellipse_3" cx="2.5" cy="2.5" r="2.5" />
-        </g>
-      </svg>
     </div>
   );
 };
