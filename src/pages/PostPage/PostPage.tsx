@@ -1,5 +1,5 @@
 import { useParams } from "react-router-dom";
-import { Navbar } from "../../components";
+import { Heading, Navbar } from "../../components";
 import List from "../../components/List/List";
 import Post from "../../components/Post/Post";
 import { Header } from "../../components/UI/Header/Header";
@@ -21,12 +21,15 @@ const PostPage = () => {
         <List listType="subscribes" />
       </aside>
       <main className="Main">
-        {/* <Post
-          name={post.user_fk.name}
-          date={post.reg_date}
-          postText={post.main_text}
-          photos={post.photos}
-        /> */}
+        {isLoading && <Heading text="Loading..." variant="h1"/>}
+        {data && (<Post
+          name={data.message?.user_fk.name}
+          date={data.message?.reg_date}
+          postText={data.message.main_text}
+          photos={data.message.photos}
+          comments={data.message.comments}
+        />)}
+        
 
         <Post name={""} date={""} postText={""} />
         <div className="Post _liked _marked">
